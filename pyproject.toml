@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nkca"
+requires-python = ">=3.10"
+dependencies = [
+  "effecthandlers @ git+https://github.com/ludvb/effecthandlers",
+  "effecthandlers-logging @ git+https://github.com/ludvb/effecthandlers-logging",
+  "einops",
+  "fire",
+  "matplotlib",
+  "moviepy",
+  "numpy",
+  "pygame",
+  "tabulate",
+  "tensorboard",
+  "torch",
+  "torchmetrics[image]",
+  "torchvision",
+]
+dynamic = ["version"]
+
+[tool.setuptools.dynamic]
+version = {attr = "nkca.__version__.__version__"}
+
+[project.scripts]
+nkca-interactive = "nkca_cli.interactive:main"
+nkca-metrics = "nkca_cli.metrics:main"
+nkca-sample = "nkca_cli.sample:main"
+nkca-train = "nkca_cli.train:main"

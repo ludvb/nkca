@@ -1,0 +1,13 @@
+*.egg
+*.egg-info/
+*.log
+*.py[cod]
+build
+data/
+.direnv/
+.DS_Store
+htmlcov
+.idea
+tmp/
+.venv/
+.vscode/

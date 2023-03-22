@@ -184,8 +184,9 @@ def train(
                 p_noisy = add_noise(x, noise_level)
                 x = distr.sample(p_noisy)
 
-                pyx, _ = noise_kernel(x, noise_level)
-                y = distr.sample(pyx).detach()
+                with torch.no_grad():
+                    pyx, _ = noise_kernel(x, noise_level)
+                    y = distr.sample(pyx)
                 pxy, _ = noise_kernel(y, noise_level)
                 logp = distr.logp(pxy, x)
                 loss = -logp.reshape(logp.shape[0], -1).sum(1).mean()

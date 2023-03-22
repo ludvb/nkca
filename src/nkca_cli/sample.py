@@ -82,7 +82,7 @@ def generate_samples(
         noise_iterator = iter(
             [0.0]
             + np.linspace(
-                max_noise, min_noise, num=num_steps, dtype=np.float32, endpoint=False
+                max_noise, min_noise, num=num_steps, dtype=np.float32
             ).tolist()
         )
         chain = run_markov_chain(

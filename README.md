@@ -53,12 +53,15 @@ the dataloader will recursively traverse all subdirectories in this path and loa
 
 The following arguments were used to train the models in the paper:
 
-|                        |  hidden-size | dim-mults          | epochs | batch-size  | resize | data-augmentation |
-|------------------------|--------------|--------------------|--------|-------------|--------|-------------------|
-| CelebA-HQ              |  256         | [1, 1, 2, 2, 4, 4] | 500    | 32          | 256    | Unset             |
-| LSUN Church            |  128         | [1, 2, 4, 8]       | 500    | 32          | 128    | Unset             |
-| CIFAR-10               |  128         | [1, 2, 4, 8]       | 700    | 128         | Unset  | [fliph]           |
-| CIFAR-10 (categorical) |  128         | [1, 2, 4, 8]       | 500    | 512         | Unset  | [fliph]           |
+|                          |  hidden-size | dim-mults          | epochs | batch-size  | resize | data-augmentation |
+|--------------------------|--------------|--------------------|--------|-------------|--------|-------------------|
+| CelebA-HQ                |  256         | [1, 1, 2, 2, 4, 4] | 500    | 32          | 256    | Unset             |
+| LSUN Church              |  128         | [1, 2, 4, 8]       | 500    | 32          | 128    | Unset             |
+| CIFAR-10                 |  128         | [1, 2, 4, 8]       | 700    | 128         | Unset  | [fliph]           |
+| CIFAR-10 (categorical\*) |  128         | [1, 2, 4, 8]       | 500    | 512         | Unset  | [fliph]           |
+
+\* To train a categorical model, the `--discrete` flag additionally needs to be specified.
+The dataset will be discretized to the number of categories set by the `--num-classes` flag (defaults to 10).
 
 Training progress is logged to a TensorBoard event file in the output directory and can be monitored with the command `tensorboard --logdir=/path/to/output/directory`.
 
